@@ -1,0 +1,12 @@
+For E-Micro Contracts:
+    Micro E-Mini Russell 2000 (M2K) – $25
+    Micro E-Mini S&P 500 (MES) – $40
+    Micro E-Mini Dow (MYM) – $50
+    Micro E-Mini Nasdaq 100 (NQ) – $50
+    All E-Micro FX contracts – $50
+
+For E-Mini Contracts:
+    E-Mini Russell 2000 (TY and RTY) – $250
+    E-Mini S&P 500 (ES) – $400
+    E-Mini Dow (YM) – $500
+    E-Mini Nasdaq 100 (NQ) – $500

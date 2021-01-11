@@ -1,0 +1,55 @@
+------------------User connected to account portal------------------
+{
+  ES: [
+    {
+      symbol: 'ES',
+      conid: 371749798,
+      underlyingConid: 11004968,
+      expirationDate: 20200918,
+      ltd: 20200917
+    },
+    {
+      symbol: 'ES',
+      conid: 383974339,
+      underlyingConid: 11004968,
+      expirationDate: 20201218,
+      ltd: 20201217
+    },
+    {
+      symbol: 'ES',
+      conid: 396336017,
+      underlyingConid: 11004968,
+      expirationDate: 20210319,
+      ltd: 20210318
+    },
+    {
+      symbol: 'ES',
+      conid: 400062953,
+      underlyingConid: 182880167,
+      expirationDate: 20200918,
+      ltd: 20200918
+    },
+    {
+      symbol: 'ES',
+      conid: 412889032,
+      underlyingConid: 11004968,
+      expirationDate: 20210618,
+      ltd: 20210617
+    },
+    {
+      symbol: 'ES',
+      conid: 428520022,
+      underlyingConid: 11004968,
+      expirationDate: 20210917,
+      ltd: 20210916
+    },
+    {
+      symbol: 'ES',
+      conid: 446091461,
+      underlyingConid: 11004968,
+      expirationDate: 20211217,
+      ltd: 20211216
+    }
+  ]
+}
+Press any key to continue...
