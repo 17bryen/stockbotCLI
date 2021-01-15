@@ -1,5 +1,5 @@
 {
-   "frequency": [15, "min"],
+   "frequency": [1, "min"],
    "backtest": {
       "length": [24, "h"]
    },

@@ -14,9 +14,9 @@ let SMA = {
         for (let i in settings.technicalIndicators.TAValues) {
             sum = 0;
             for (let j = 0; j < length; j++){
-                sum += priceAction.history[j][i];
+                sum += priceAction.history[j][settings.technicalIndicators.TAValues[i]];
             }
-            toReturn[i] = sum / length;
+            toReturn[settings.technicalIndicators.TAValues[i]] = sum / length;
         }
         toReturn.t = priceAction.history[0].t;
 
@@ -32,21 +32,21 @@ let EMA = {
             return false;
         }
         let toReturn = {
-            history: [{}],
+            history: [],
             k: (EMAWeight / (length + 1)),
             length: length
         }
 
         let tempNewest = priceAction.history.shift();
-        toReturn.history.push(SMA.calulate(priceAction, length));
+        toReturn.history.push(await SMA.calulate(priceAction, length));
         priceAction.history.unshift(tempNewest);
     
         let toAdd = {};
         let sum = 0;
         for (let i in settings.technicalIndicators.TAValues) {
             sum = 0;
-            sum = (priceAction.history[0][i] * toReturn.k) + (toReturn.history[0][i] * (1 - toReturn.k));
-            toAdd[i] = sum;
+            sum = (priceAction.history[0][settings.technicalIndicators.TAValues[i]] * toReturn.k) + (toReturn.history[0][settings.technicalIndicators.TAValues[i]] * (1 - toReturn.k));
+            toAdd[settings.technicalIndicators.TAValues[i]] = sum;
         }
         toAdd.t = priceAction.history[0].t;
 
@@ -59,8 +59,8 @@ let EMA = {
         let sum = 0;
         for (let i in settings.technicalIndicators.TAValues) {
             sum = 0;
-            sum = (priceAction.history[0][i] * prevEMA.k) + ( prevEMA.history[0][i] * (1 - prevEMA.k));
-            toAdd[i] = sum;
+            sum = (priceAction.history[0][settings.technicalIndicators.TAValues[i]] * prevEMA.k) + ( prevEMA.history[0][settings.technicalIndicators.TAValues[i]] * (1 - prevEMA.k));
+            toAdd[settings.technicalIndicators.TAValues[i]] = sum;
         }
         toAdd.t = priceAction.history[0].t;
 
@@ -160,7 +160,7 @@ let MACD = {
     }
     */
 
-    async calculate(priceAction, longerEMA, shorterEMA, signal) {
+    async calculate(priceAction, longerEMA, shorterEMA, signal = 9) {
         if (priceAction.history.length < (longerEMA + 1)){
             console.log('Not enough data to create MACD from contract');
             return false;
@@ -178,7 +178,7 @@ let MACD = {
         toReturn.upperEMA = await EMA.calculate(priceAction, longerEMA);
       
         for (let i in settings.technicalIndicators.TAValues)
-            toAdd[i] = (toReturn.lowerEMA.history[0][i] - toReturn.upperEMA.history[0][i]);
+            toAdd[settings.technicalIndicators.TAValues[i]] = (toReturn.lowerEMA.history[0][settings.technicalIndicators.TAValues[i]] - toReturn.upperEMA.history[0][settings.technicalIndicators.TAValues[i]]);
         toAdd.t = priceAction.history[0].t;
         
         toReturn.history.push(toAdd);
@@ -191,7 +191,7 @@ let MACD = {
 
         let toAdd = { };
         for (let i in settings.technicalIndicators.TAValues)
-            toAdd[i] = (toReturn.lowerEMA.history[0][i] - toReturn.upperEMA.history[0][i]);
+            toAdd[settings.technicalIndicators.TAValues[i]] = (toReturn.lowerEMA.history[0][settings.technicalIndicators.TAValues[i]] - toReturn.upperEMA.history[0][settings.technicalIndicators.TAValues[i]]);
         toAdd.t = priceAction.history[0].t;
         prevMACD.history.unshift(toAdd);
 
