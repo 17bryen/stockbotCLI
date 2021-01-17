@@ -110,6 +110,8 @@ async function mainLoop() {
                 lowTick[x].unshift();           //TO-DO: ADD UP DATA HERE
             }
             tempTick[x].clear();
+            if (lowTick[x].length == )
+
         }
         
     }
