@@ -3,6 +3,7 @@
 const axios = require('axios').default;
 const https = require('https');
 const agent = new https.Agent({ rejectUnauthorized: false });
+const settings = require('./../Logic/config.json');
 
 const rootAddr = 'https://localhost:5000/v1/portal';
 
@@ -199,14 +200,20 @@ const marketData = {
         return response['data'];
     },
 
-    async marketData(conidCsl, since, fieldsCsl) {
+    async marketData(conidCsl, since = false, fieldsCsl = false) {
+        let parameters = {
+            'conids': conidCsl
+        }
+        if (since)
+            parameters.since = since;
+        if(fieldsCsl)
+            parameters.fieldsCsl = fieldsCsl;
+        else
+            parameters.fieldsCsl = settings.relMarketDataFields;
+
         let response = await axios.get(rootAddr + '/iserver/marketdata/snapshot', {
             httpsAgent: agent,
-            params: {
-                'conids': conidCsl,
-                'since': since,
-                'fields': fieldsCsl
-            }
+            params: parameters
         }).catch(error => {
             console.log(error);
             return false;

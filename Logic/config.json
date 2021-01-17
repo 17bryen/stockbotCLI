@@ -1,5 +1,11 @@
 {
    "frequency": [1, "min"],
+   "tickSizes": {
+       "anchor": 1,
+        "low": 2,
+        "med": 15,
+        "high": 30
+   },
    "backtest": {
       "length": [24, "h"]
    },
